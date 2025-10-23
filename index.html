@@ -426,77 +426,69 @@
         </footer>
     </div>
     
-    <script>
-        const SUPABASE_URL = 'https://eitdeeyscjgmyeccvrpi.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpdGRlZXlzY2pnbXllY2N2cnBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MTI3NzgsImV4cCI6MjA3NTM4ODc3OH0.0vVK7WKnUQ6GKwVSBS-MqY4pk2FdPSDLG6_-jmfjbd8';
-        const CONVERTKIT_API_SECRET = 'qYlFtMv9eF094SEkJheJxf5v9RoC7QYvBkcfSDYOFJc';
-        const CONVERTKIT_TAG_ID = 11911043;
+   <script>
+    const SUPABASE_URL = 'https://eitdeeyscjgmyeccvrpi.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpdGRlZXlzY2pnbXllY2N2cnBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MTI3NzgsImV4cCI6MjA3NTM4ODc3OH0.0vVK7WKnUQ6GKwVSBS-MqY4pk2FdPSDLG6_-jmfjbd8';
+    
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        document.getElementById('signupForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('successMessage');
+        const errorMsg = document.getElementById('errorMessage');
+        
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Joining...';
+        
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value || null;
+        
+        try {
+            // Save to Supabase
+            const supabaseResponse = await fetch(`${SUPABASE_URL}/rest/v1/beta_signups`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                    'Prefer': 'return=minimal'
+                },
+                body: JSON.stringify({
+                    full_name: fullName,
+                    email: email,
+                    phone: phone,
+                    source: 'landing_page'
+                })
+            });
             
-            const submitBtn = document.getElementById('submitBtn');
-            const successMsg = document.getElementById('successMessage');
-            const errorMsg = document.getElementById('errorMessage');
-            
-            successMsg.style.display = 'none';
-            errorMsg.style.display = 'none';
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Joining...';
-            
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value || null;
-            
-            const firstName = fullName.split(' ')[0];
-            
-            try {
-                // 1. Save to Supabase
-                const supabaseResponse = await fetch(`${SUPABASE_URL}/rest/v1/beta_signups`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': SUPABASE_ANON_KEY,
-                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify({
-                        full_name: fullName,
-                        email: email,
-                        phone: phone,
-                        source: 'landing_page'
-                    })
-                });
+            if (supabaseResponse.ok || supabaseResponse.status === 201) {
+                successMsg.style.display = 'block';
+                document.getElementById('signupForm').reset();
                 
-                // 2. Add to ConvertKit with tag
-                const convertkitResponse = await fetch(`https://api.convertkit.com/v3/tags/${CONVERTKIT_TAG_ID}/subscribe`, {
+                // Optional: Send to your backend to handle ConvertKit
+                // This way ConvertKit errors don't break the user experience
+                fetch('https://your-backend-url.com/add-to-convertkit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        api_secret: CONVERTKIT_API_SECRET,
-                        email: email,
-                        first_name: firstName
-                    })
-                });
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, first_name: fullName.split(' ')[0] })
+                }).catch(() => {}); // Silent fail - ConvertKit happens in background
                 
-                if ((supabaseResponse.ok || supabaseResponse.status === 201) && convertkitResponse.ok) {
-                    successMsg.style.display = 'block';
-                    document.getElementById('signupForm').reset();
-                } else {
-                    throw new Error('Signup failed');
-                }
-            } catch (error) {
-                console.error('Signup error:', error);
-                errorMsg.style.display = 'block';
-                errorMsg.textContent = 'Something went wrong. Please try again or email support@emblisswellness.com';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Join Beta - Get Free Platinum Access';
+            } else {
+                throw new Error('Signup failed');
             }
-        });
-    </script>
+        } catch (error) {
+            console.error('Signup error:', error);
+            errorMsg.style.display = 'block';
+            errorMsg.textContent = 'Something went wrong. Please try again or email support@emblisswellness.com';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Join Beta - Get Free Platinum Access';
+        }
+    });
+</script>
 </body>
 </html>
