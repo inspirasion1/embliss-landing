@@ -427,69 +427,137 @@
         </footer>
     </div>
     
-   <script>
-    const SUPABASE_URL = 'https://eitdeeyscjgmyeccvrpi.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVpdGRlZXlzY2pnbXllY2N2cnBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4MTI3NzgsImV4cCI6MjA3NTM4ODc3OH0.0vVK7WKnUQ6GKwVSBS-MqY4pk2FdPSDLG6_-jmfjbd8';
-    
-    document.getElementById('signupForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = document.getElementById('submitBtn');
-        const successMsg = document.getElementById('successMessage');
-        const errorMsg = document.getElementById('errorMessage');
-        
-        successMsg.style.display = 'none';
-        errorMsg.style.display = 'none';
-        
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Joining...';
-        
-        const fullName = document.getElementById('fullName').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value || null;
-        
-        try {
-            // Save to Supabase
-            const supabaseResponse = await fetch(`${SUPABASE_URL}/rest/v1/beta_signups`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apikey': SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                    'Prefer': 'return=minimal'
-                },
-                body: JSON.stringify({
-                    full_name: fullName,
-                    email: email,
-                    phone: phone,
-                    source: 'landing_page'
-                })
-            });
-            
-            if (supabaseResponse.ok || supabaseResponse.status === 201) {
-                successMsg.style.display = 'block';
-                document.getElementById('signupForm').reset();
-                
-                // Optional: Send to your backend to handle ConvertKit
-                // This way ConvertKit errors don't break the user experience
-                fetch('https://your-backend-url.com/add-to-convertkit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, first_name: fullName.split(' ')[0] })
-                }).catch(() => {}); // Silent fail - ConvertKit happens in background
-                
-            } else {
-                throw new Error('Signup failed');
-            }
-        } catch (error) {
-            console.error('Signup error:', error);
-            errorMsg.style.display = 'block';
-            errorMsg.textContent = 'Something went wrong. Please try again or email support@emblisswellness.com';
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Join Beta - Get Free Platinum Access';
-        }
+  <script>
+// Auto-detect operating system
+function detectOS() {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  
+  // iOS detection
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return 'ios';
+  }
+  
+  // Android detection
+  if (/android/i.test(userAgent)) {
+    return 'android';
+  }
+  
+  // Desktop/Unknown - show selection
+  return null;
+}
+
+// Show OS selection if needed
+function showOSSelection() {
+  const osSelectionHTML = `
+    <div id="os-selection" style="margin: 20px 0; text-align: center;">
+      <p style="margin-bottom: 15px; font-weight: 600; color: #1E3A5F;">Select your device:</p>
+      <button type="button" class="os-btn" data-os="ios" style="margin-right: 15px; padding: 15px 30px; border: 3px solid #4A90E2; background: white; color: #1E3A5F; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 1rem;">
+        📱 iPhone/iPad
+      </button>
+      <button type="button" class="os-btn" data-os="android" style="padding: 15px 30px; border: 3px solid #4A90E2; background: white; color: #1E3A5F; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 1rem;">
+        🤖 Android
+      </button>
+    </div>
+  `;
+  
+  const emailInput = document.getElementById('email');
+  emailInput.insertAdjacentHTML('afterend', osSelectionHTML);
+  
+  // Handle OS button clicks
+  document.querySelectorAll('.os-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.os-btn').forEach(b => {
+        b.style.background = 'white';
+        b.style.color = '#1E3A5F';
+        b.style.borderWidth = '3px';
+      });
+      
+      this.style.background = '#4A90E2';
+      this.style.color = 'white';
+      this.style.borderWidth = '4px';
+      
+      window.selectedOS = this.dataset.os;
     });
+  });
+}
+
+// Initialize
+let detectedOS = detectOS();
+let selectedOS = detectedOS;
+
+// If desktop/unknown, show selection buttons
+if (!detectedOS) {
+  document.addEventListener('DOMContentLoaded', showOSSelection);
+}
+
+// Form submission
+document.getElementById('beta-signup-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const fullName = document.getElementById('name').value;
+  
+  // Get final OS (either auto-detected or manually selected)
+  const finalOS = selectedOS || window.selectedOS;
+  
+  if (!finalOS) {
+    alert('Please select your device type (iPhone or Android)');
+    return;
+  }
+  
+  try {
+    // 1. Save to Supabase
+    const supabaseResponse = await fetch('https://eitdeeyscjgmyeccvrpi.supabase.co/rest/v1/beta_signups', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'YOUR_SUPABASE_ANON_KEY',
+        'Authorization': 'Bearer YOUR_SUPABASE_ANON_KEY'
+      },
+      body: JSON.stringify({
+        email: email,
+        operating_system: finalOS,
+        signup_source: 'landing_page'
+      })
+    });
+    
+    // 2. Send to ConvertKit with OS tag
+    const convertKitResponse = await fetch('https://api.convertkit.com/v3/forms/YOUR_FORM_ID/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        api_key: 'YOUR_CONVERTKIT_API_KEY',
+        email: email,
+        first_name: fullName,
+        tags: [finalOS === 'ios' ? 'ios_beta' : 'android_beta']
+      })
+    });
+    
+    if (supabaseResponse.ok && convertKitResponse.ok) {
+      // Show success message
+      document.getElementById('beta-signup-form').innerHTML = `
+        <div style="text-align: center; padding: 40px 20px;">
+          <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+          <h2 style="color: #1E3A5F; margin-bottom: 15px;">You're On The List!</h2>
+          <p style="color: #4A90E2; font-size: 1.1rem; margin-bottom: 20px;">
+            Check your email for next steps.
+          </p>
+          <p style="color: #666; font-size: 0.95rem;">
+            We'll notify you when the ${finalOS === 'ios' ? 'iOS' : 'Android'} app is ready!
+          </p>
+        </div>
+      `;
+    } else {
+      throw new Error('Signup failed');
+    }
+    
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Something went wrong. Please try again or email support@emblisswellness.com');
+  }
+});
 </script>
 </body>
 </html>
