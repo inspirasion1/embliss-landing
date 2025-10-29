@@ -1,1 +1,387 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy - Embliss Wellness</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #1E3A5F;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: #1E3A5F;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: #4A90E2;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .effective-date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background: #1E3A5F;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .highlight {
+            background: #E3F2FD;
+            padding: 20px;
+            border-left: 4px solid #4A90E2;
+            margin: 20px 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #4A90E2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            color: #1E3A5F;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cookie Policy</h1>
+        <p class="effective-date">Effective Date: October 29, 2025</p>
+        
+        <p>This Cookie Policy explains how Embliss Wellness ("Embliss," "we," "us," or "our") uses cookies and similar technologies when you use our mobile application and website.</p>
+        
+        <h2>1. What Are Cookies?</h2>
+        
+        <p>Cookies are small text files stored on your device when you visit a website or use an app. They help us remember your preferences, understand how you use our services, and improve your experience.</p>
+        
+        <h3>Types of Technologies We Use</h3>
+        <ul>
+            <li><strong>Cookies:</strong> Text files stored in your browser</li>
+            <li><strong>Local Storage:</strong> Data stored in your browser or app</li>
+            <li><strong>Session Storage:</strong> Temporary data that expires when you close the app</li>
+            <li><strong>Mobile Identifiers:</strong> Device identifiers used in mobile apps</li>
+        </ul>
+        
+        <h2>2. How We Use Cookies</h2>
+        
+        <p>We use cookies and similar technologies for the following purposes:</p>
+        
+        <h3>Essential Cookies (Required)</h3>
+        <p>These cookies are necessary for the app to function and cannot be disabled:</p>
+        <ul>
+            <li><strong>Authentication:</strong> Keep you logged in securely</li>
+            <li><strong>Security:</strong> Protect against fraudulent activity</li>
+            <li><strong>Session Management:</strong> Remember your preferences during a session</li>
+        </ul>
+        
+        <h3>Performance & Analytics Cookies (Optional)</h3>
+        <p>These cookies help us understand how users interact with Embliss:</p>
+        <ul>
+            <li><strong>Usage Analytics:</strong> Track which features are most used</li>
+            <li><strong>Error Tracking:</strong> Identify and fix technical issues</li>
+            <li><strong>Performance Monitoring:</strong> Measure app speed and responsiveness</li>
+        </ul>
+        
+        <h3>Functional Cookies (Optional)</h3>
+        <p>These cookies enhance your experience by remembering your choices:</p>
+        <ul>
+            <li><strong>Preferences:</strong> Remember your settings (theme, language, etc.)</li>
+            <li><strong>Saved Data:</strong> Keep forms partially filled</li>
+            <li><strong>Personalization:</strong> Tailor content to your interests</li>
+        </ul>
+        
+        <h2>3. Cookies We Use</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Cookie Name</th>
+                    <th>Purpose</th>
+                    <th>Type</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>auth_token</td>
+                    <td>Keeps you logged in</td>
+                    <td>Essential</td>
+                    <td>7 days</td>
+                </tr>
+                <tr>
+                    <td>session_id</td>
+                    <td>Manages your session</td>
+                    <td>Essential</td>
+                    <td>Session</td>
+                </tr>
+                <tr>
+                    <td>user_preferences</td>
+                    <td>Saves your app settings</td>
+                    <td>Functional</td>
+                    <td>1 year</td>
+                </tr>
+                <tr>
+                    <td>analytics_id</td>
+                    <td>Tracks app usage patterns</td>
+                    <td>Analytics</td>
+                    <td>2 years</td>
+                </tr>
+                <tr>
+                    <td>device_id</td>
+                    <td>Identifies your device</td>
+                    <td>Essential</td>
+                    <td>Persistent</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>4. Third-Party Cookies</h2>
+        
+        <p>We work with trusted third-party service providers who may set their own cookies:</p>
+        
+        <h3>Supabase (Authentication & Database)</h3>
+        <ul>
+            <li>Manages secure authentication</li>
+            <li>Stores session tokens</li>
+            <li>Cookie: supabase-auth-token</li>
+        </ul>
+        
+        <h3>Stripe (Payment Processing)</h3>
+        <ul>
+            <li>Processes subscription payments</li>
+            <li>Prevents fraud</li>
+            <li>Cookie: __stripe_sid, __stripe_mid</li>
+        </ul>
+        
+        <h3>Google (Authentication & Analytics)</h3>
+        <ul>
+            <li>Google Sign-In functionality</li>
+            <li>Firebase analytics (optional)</li>
+            <li>Cookie: _ga, _gid (if analytics enabled)</li>
+        </ul>
+        
+        <h3>Apple (Authentication)</h3>
+        <ul>
+            <li>Apple Sign-In functionality</li>
+            <li>Secure authentication tokens</li>
+        </ul>
+        
+        <p>These third parties have their own privacy policies and cookie practices. We encourage you to review them:</p>
+        <ul>
+            <li><a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a></li>
+            <li><a href="https://stripe.com/privacy" target="_blank">Stripe Privacy Policy</a></li>
+            <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+            <li><a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a></li>
+        </ul>
+        
+        <h2>5. Mobile App Data Storage</h2>
+        
+        <p>In addition to cookies, our mobile app stores data locally on your device:</p>
+        
+        <h3>Local App Storage</h3>
+        <ul>
+            <li><strong>User Preferences:</strong> App settings, theme, notifications</li>
+            <li><strong>Cached Data:</strong> Temporary storage for faster loading</li>
+            <li><strong>Offline Data:</strong> Mood logs, journal entries saved while offline</li>
+            <li><strong>Authentication Tokens:</strong> Secure tokens to keep you logged in</li>
+        </ul>
+        
+        <h3>iOS-Specific Storage</h3>
+        <ul>
+            <li>UserDefaults for preferences</li>
+            <li>Keychain for secure data (auth tokens, encryption keys)</li>
+            <li>SQLite database for local data caching</li>
+        </ul>
+        
+        <h3>Android-Specific Storage</h3>
+        <ul>
+            <li>SharedPreferences for settings</li>
+            <li>Encrypted storage for sensitive data</li>
+            <li>SQLite database for local data caching</li>
+        </ul>
+        
+        <h2>6. How to Manage Cookies</h2>
+        
+        <h3>In the Embliss App</h3>
+        <p>You can control certain cookie preferences in the app:</p>
+        <ol>
+            <li>Open Embliss</li>
+            <li>Go to Settings → Privacy & Data</li>
+            <li>Toggle "Analytics & Performance Data" on or off</li>
+        </ol>
+        
+        <p><strong>Note:</strong> Disabling essential cookies will prevent the app from functioning properly.</p>
+        
+        <h3>On iOS Devices</h3>
+        <ol>
+            <li>Go to Settings → Privacy & Security</li>
+            <li>Select Tracking</li>
+            <li>Toggle "Allow Apps to Request to Track" off</li>
+            <li>Or disable tracking per-app under "Apps That Requested to Track"</li>
+        </ol>
+        
+        <h3>On Android Devices</h3>
+        <ol>
+            <li>Go to Settings → Google → Ads</li>
+            <li>Toggle "Opt out of Ads Personalization"</li>
+            <li>Or reset your Advertising ID</li>
+        </ol>
+        
+        <h3>Web Browser Settings</h3>
+        <p>If accessing Embliss via web browser, you can control cookies through your browser settings:</p>
+        <ul>
+            <li><strong>Chrome:</strong> Settings → Privacy and security → Cookies and other site data</li>
+            <li><strong>Safari:</strong> Preferences → Privacy → Manage Website Data</li>
+            <li><strong>Firefox:</strong> Options → Privacy & Security → Cookies and Site Data</li>
+            <li><strong>Edge:</strong> Settings → Privacy, search, and services → Cookies</li>
+        </ul>
+        
+        <h2>7. Do Not Track Signals</h2>
+        
+        <p>Our app does not currently respond to "Do Not Track" (DNT) browser signals. However, you can control tracking through the app settings as described above.</p>
+        
+        <h2>8. Children's Privacy</h2>
+        
+        <p>We do not knowingly collect cookies or tracking data from children under 13. Users ages 13-17 have additional privacy protections, including:</p>
+        <ul>
+            <li>Limited data collection</li>
+            <li>No targeted advertising</li>
+            <li>Enhanced parental controls</li>
+        </ul>
+        
+        <h2>9. International Users</h2>
+        
+        <h3>European Economic Area (EEA)</h3>
+        <p>Under GDPR, you have additional rights regarding cookies:</p>
+        <ul>
+            <li>Right to consent before non-essential cookies are set</li>
+            <li>Right to withdraw consent at any time</li>
+            <li>Right to access information about cookies we use</li>
+        </ul>
+        
+        <h3>California Residents</h3>
+        <p>Under CCPA, you have the right to:</p>
+        <ul>
+            <li>Know what personal information we collect via cookies</li>
+            <li>Opt-out of the "sale" of your information (we do not sell data)</li>
+            <li>Request deletion of data collected via cookies</li>
+        </ul>
+        
+        <h2>10. Data Retention</h2>
+        
+        <p>Cookie data is retained for different periods depending on the type:</p>
+        <ul>
+            <li><strong>Session Cookies:</strong> Deleted when you close the app</li>
+            <li><strong>Authentication Cookies:</strong> Deleted after 7 days or when you log out</li>
+            <li><strong>Preference Cookies:</strong> Retained until you clear app data or uninstall</li>
+            <li><strong>Analytics Cookies:</strong> Anonymized after 26 months</li>
+        </ul>
+        
+        <h2>11. Security</h2>
+        
+        <p>We implement security measures to protect cookie data:</p>
+        <ul>
+            <li>Cookies are transmitted over encrypted connections (HTTPS/TLS)</li>
+            <li>Authentication tokens are encrypted and securely stored</li>
+            <li>We use HttpOnly and Secure flags to protect against attacks</li>
+            <li>Regular security audits of our cookie practices</li>
+        </ul>
+        
+        <h2>12. Updates to This Policy</h2>
+        
+        <p>We may update this Cookie Policy from time to time. We will notify you of changes by:</p>
+        <ul>
+            <li>Posting the updated policy in the app</li>
+            <li>Sending an email notification for material changes</li>
+            <li>Displaying an in-app notification</li>
+        </ul>
+        
+        <p>Your continued use of Embliss after updates constitutes acceptance of the revised Cookie Policy.</p>
+        
+        <h2>13. Contact Us</h2>
+        
+        <p>If you have questions about our use of cookies, please contact us:</p>
+        
+        <p>
+            <strong>Email:</strong> privacy@emblisswellness.com<br>
+            <strong>Website:</strong> https://emblisswellness.com<br>
+            <strong>Mail:</strong> Embliss Wellness<br>
+            [Your PO Box or Business Address]<br>
+            Houston, TX [ZIP]
+        </p>
+        
+        <div class="highlight">
+            <strong>Quick Summary:</strong> We use cookies to keep you logged in, remember your preferences, and improve our app. You can control most cookies through app settings, but essential cookies are required for the app to work properly.
+        </div>
+        
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>
