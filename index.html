@@ -695,6 +695,7 @@ src="https://www.facebook.com/tr?id=810555945021101&ev=PageView&noscript=1"
                     document.getElementById('successMessage').style.display = 'block';
                     document.getElementById('betaForm').style.display = 'none';
                     document.getElementById('errorMessage').style.display = 'none';
+                    fbq('track', 'CompleteRegistration');
                 } else {
                     throw new Error('Signup failed');
                 }
